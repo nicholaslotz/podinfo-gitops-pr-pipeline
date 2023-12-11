@@ -21,7 +21,8 @@ data "harness_platform_gitops_agent_deploy_yaml" "gitops_agent_yaml" {
 
 resource "local_file" "gitops_agent_yaml_file" {
   filename = "gitops_agent.yaml"
-  content  = data.harness_platform_gitops_agent_deploy_yaml.gitops_agent_yaml.yaml
+  content  = jsondecode(data.harness_platform_gitops_agent_deploy_yaml.gitops_agent_yaml.yaml)["value"]
+  depends_on = [harness_platform_gitops_agent.gitops_agent]
 }
 
 resource "null_resource" "deploy_agent_resources_to_cluster" {

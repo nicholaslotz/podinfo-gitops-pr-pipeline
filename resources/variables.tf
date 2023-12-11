@@ -13,6 +13,11 @@ variable "org_id" {
     default = ""
 }
 
+variable "k3d_cluster_name" {
+    type = string
+    default = ""
+}
+
 variable "agent_identifier" {
     type = string
     default = ""

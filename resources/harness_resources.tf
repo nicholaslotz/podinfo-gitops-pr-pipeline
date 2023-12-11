@@ -39,7 +39,7 @@ resource "harness_platform_gitops_cluster" "gitops_cluster" {
   depends_on = [harness_platform_gitops_repository.gitops_repo]
 }
 
-resource "harness_platform_service" "gitops_guestbook_service" {
+resource "harness_platform_service" "gitops_service" {
   identifier  = var.service_name
   name        = var.service_name
   description = var.service_name
@@ -57,7 +57,7 @@ resource "harness_platform_service" "gitops_guestbook_service" {
   depends_on = [harness_platform_gitops_cluster.gitops_cluster]
 }
 
-resource "harness_platform_environment" "gitops_guestbook_env" {
+resource "harness_platform_environment" "gitops_env" {
   identifier = var.env_name
   name       = var.env_name
   org_id     = var.org_id
